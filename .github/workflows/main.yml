@@ -1,9 +1,14 @@
 name: Hprofile Actions
 on: workflow_dispatch
 jobs:
-  Testing: 
+  Testing:
     runs-on: ubuntu-latest
     steps:
-      - name: Testing Workflow
-        run: echo "workflow works!"
-      
+      - name: code checkout
+        uses: actions/checkout@v4
+
+      - name: Maven Test
+        run: mvn test
+
+      - name: Maven Checks
+        run: mvn checkstyle:checkstyle
